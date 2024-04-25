@@ -20,7 +20,7 @@ class ForecastsControllerTest < ActionDispatch::IntegrationTest
       post forecasts_url, params: { forecast: {  } }
     end
 
-    assert_redirected_to forecast_url(Forecast.last)
+    assert_redirected_to forecasts_url
   end
 
   test "should show forecast" do
