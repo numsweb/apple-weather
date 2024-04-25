@@ -1,0 +1,44 @@
+<%= form_with(model: forecast) do |form| %>
+  <% if forecast.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(forecast.errors.count, "error") %> prohibited this forecast from being saved:</h2>
+
+      <ul>
+        <% forecast.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+    <tr>
+      <td>
+        <div class="field">
+          <%= form.label :address %>  <span class="required"> *  </span> <br/>
+          <%= form.text_field :address, class: "forecast_edit_field" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="field" >
+          <%= form.label :temperature %><br/>
+          <%= form.text_field :temperature, class: "forecast_edit_field" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="field">
+          <%= form.label :last_refreshed %><br/>
+          <%= form.date_field :last_refreshed, class: "forecast_edit_field" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+connection: &connection
+  host: localhost
+  socket: /tmp/mysql.sock
+  reconnect: false
+  pool: 5
+  encoding: utf8
+
+login: &login
+  username: root
+  password:
+
+development:
+  adapter: mysql2
+  database: apple_weather_dev
+  <<: *login
+  <<: *connection
+
+test:
+  adapter: mysql2
+  database: apple_weather_test
+  <<: *login
+  <<: *connection
+
+  production:
+    adapter: mysql2
+    database: apple_weather_production
+    <<: *login
+    <<: *connection
+
