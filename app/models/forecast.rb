@@ -27,8 +27,8 @@ class Forecast < ApplicationRecord
     end
 
 
-    static_url = URI("https://api.tomorrow.io/v4/weather/forecast?location=33.566574,-81.719398&apikey=wGr1PdeMGQzCZBNFpJItrdoOQANlEkzY")
-    url = URI("https://api.tomorrow.io/v4/weather/forecast?location=" + location[0].to_s + "," + location[1].to_s + "&apikey=wGr1PdeMGQzCZBNFpJItrdoOQANlEkzY")
+    url = URI("https://api.tomorrow.io/v4/weather/forecast?location=33.566574,-81.719398&apikey=wGr1PdeMGQzCZBNFpJItrdoOQANlEkzY")
+    #url = URI("https://api.tomorrow.io/v4/weather/forecast?location=" + location[0].to_s + "," + location[1].to_s + "&apikey=wGr1PdeMGQzCZBNFpJItrdoOQANlEkzY")
 
     #puts "url: " + url.inspect
     #puts "built_url: " + built_url.inspect
