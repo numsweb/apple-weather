@@ -25,6 +25,7 @@ class Forecast < ApplicationRecord
     if location.blank?
       location = [33.566574, -81.719398]
     end
+    #puts "location: " + location.inspect
 
 
     url = URI("https://api.tomorrow.io/v4/weather/forecast?location=33.566574,-81.719398&apikey=wGr1PdeMGQzCZBNFpJItrdoOQANlEkzY")
@@ -43,9 +44,9 @@ class Forecast < ApplicationRecord
       raise "Evaluation API access::Too many requests error, please try again later"
     else
       hash_response = JSON.parse response.body.gsub('=>', ':')
-      puts hash_response.inspect
-      puts hash_response["timelines"]["minutely"][0]["time"].inspect rescue puts "no time"
-      puts hash_response["timelines"]["minutely"][0]["values"]["temperature"].inspect rescue puts "no temperature"
+      #puts hash_response.inspect
+      #puts hash_response["timelines"]["minutely"][0]["time"].inspect rescue puts "no time"
+      #puts hash_response["timelines"]["minutely"][0]["values"]["temperature"].inspect rescue puts "no temperature"
       time = hash_response["timelines"]["minutely"][0]["time"]
       temperature = hash_response["timelines"]["minutely"][0]["values"]["temperature"]
       forecast = Forecast.create(location:location.to_s,temperature: temperature.to_s, last_refreshed: time )
