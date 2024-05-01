@@ -23,9 +23,18 @@ class ForecastsController < ApplicationController
   def create
     params.permit!
 
-    forecast_params = {location: [33.566574, -81.719398]}
-    respond_to do |format|
+    #forecast_params = {location: [33.566574, -81.719398]}
+    results = Geocoder.search(params[:forecast][:address])
+    if results.first.present?
+      forecast_params = {location: results.first.coordinates}
+    else
+      flash.now.alert = "No result found"
       @forecast = Forecast.new
+      redirect_to new_forecast_url,  notice: "Address not found" and return
+    end
+
+    respond_to do |format|
+      @forecast = Forecast.new(forecast_params)
       if @forecast.find_and_save_forecast(forecast_params)
         format.html { redirect_to forecasts_url, notice: "Forecast was successfully created." }
         format.json { render :show, status: :created, location: @forecast }

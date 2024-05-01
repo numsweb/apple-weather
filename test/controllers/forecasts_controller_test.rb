@@ -17,7 +17,7 @@ class ForecastsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create forecast" do
     assert_difference("Forecast.count") do
-      post forecasts_url, params: { forecast: {  } }
+     post forecasts_url, params: { forecast: {address: "10717 Pall Mall, Austin, TX"  } }
     end
 
     assert_redirected_to forecasts_url
