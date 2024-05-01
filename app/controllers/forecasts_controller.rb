@@ -26,7 +26,11 @@ class ForecastsController < ApplicationController
     #forecast_params = {location: [33.566574, -81.719398]}
     results = Geocoder.search(params[:forecast][:address])
     if results.first.present?
+      #TODO Unfortunately the Geocoder returns a result even if it does not find a match
+      # need to parse the result to see if it matches the requested address
+
       forecast_params = {location: results.first.coordinates}
+
     else
       flash.now.alert = "No result found"
       @forecast = Forecast.new
