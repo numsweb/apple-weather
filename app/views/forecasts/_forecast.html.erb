@@ -11,14 +11,21 @@
         </ul>
       </div>
     <% end %>
-
+    <% location_hash = JSON.parse(forecast.location.gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': ')).symbolize_keys %>
     <table>
-      <tr>
         <td>
           <div class="field"  style="padding:10px;">
             <%= f.label :location %>  <br/>
             <%#= f.text_field :location, class: "forecast_edit_field" %>
-            <%= forecast.location %>
+            <%= location_hash[:location] %>
+            <%#= forecast.location[:location]%>
+          </div>
+        </td>
+        <td>
+          <div class="field"  style="padding:10px;">
+            <%= f.label :address %>  <br/>
+            <%#= f.text_field :location, class: "forecast_edit_field" %>
+            <%= location_hash[:address].gsub(',', ' ') %>
           </div>
         </td>
         <td>

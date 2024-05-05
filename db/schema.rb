@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_24_134005) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_04_163910) do
   create_table "forecasts", charset: "utf8mb3", force: :cascade do |t|
     t.string "location"
     t.string "temperature"
     t.datetime "last_refreshed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
   end
 
 end

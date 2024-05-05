@@ -28,8 +28,7 @@ class ForecastsController < ApplicationController
     if results.first.present?
       #TODO Unfortunately the Geocoder returns a result even if it does not find a match
       # need to parse the result to see if it matches the requested address
-
-      forecast_params = {location: results.first.coordinates}
+      forecast_params = {location: results.first.coordinates, address: results.first.display_name}
 
     else
       flash.now.alert = "No result found"
