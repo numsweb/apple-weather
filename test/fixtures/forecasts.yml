@@ -4,8 +4,10 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  temperature: "24"
+  location: "{:location=>[33.526124570143764, -81.75334259288726], :address=>\"8, Carnoustie Court, Deerwood, Aiken, Aiken County, South Carolina, 29803, United States\"}"
+
+two:
+  temperature: "23.38"
+  location: "{:location=>[30.169689359868343, -97.84404596672418], :address=>\"10707, Pall Mall Drive, Bauerle Ranch, Austin, Travis County, Texas, 78748, United States\"}"
