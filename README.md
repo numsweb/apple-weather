@@ -30,8 +30,7 @@ Project information:
   * Ruby version  ruby 3.2.2 
   * Rails version  7.1.3.2
   * System dependencies specify weather API used
-  * Designed using free weather API, update if/when a commercial 
+  * Designed using free weather API (https://www.tomorrow.io), update if/when a commercial 
     (paid) API is desired
-  * Hard-coded location in initial release. Would have to add ability 
-    to accept a location and use it when collecting weather information
+  * Added the ability to accept a location and use it when collecting weather information
 

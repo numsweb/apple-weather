@@ -32,8 +32,7 @@ class ForecastsController < ApplicationController
 
     else
       flash.now.alert = "No result found"
-      @forecast = Forecast.new
-      redirect_to new_forecast_url,  notice: "Address not found" and return
+      redirect_to forecasts_url,  notice: "Address not found" and return
     end
 
     respond_to do |format|
