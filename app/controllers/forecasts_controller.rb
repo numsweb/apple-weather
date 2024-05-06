@@ -36,14 +36,31 @@ class ForecastsController < ApplicationController
     end
 
     respond_to do |format|
-      @forecast = Forecast.new(forecast_params)
-      if @forecast.find_and_save_forecast(forecast_params)
-        format.html { redirect_to forecasts_url, notice: "Forecast was successfully created." }
-        format.json { render :show, status: :created, location: @forecast }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @forecast.errors, status: :unprocessable_entity }
+      #additional requirement, only create a new forecast if there is not an existing
+      # one that is less than 30 minutes old
+
+      @forecast_found = false
+
+      Forecast.all.each do |forecast|
+        if forecast.location.include?(forecast_params[:location].to_s) && forecast.created_at > 30.minutes.ago
+          @forecast_found = true
+          break
+        end
       end
+      if @forecast_found
+        redirect_to forecasts_url, notice: "Forecast exists and is not expired." and return
+      else
+        @forecast = Forecast.new(forecast_params)
+
+        if @forecast.find_and_save_forecast(forecast_params)
+          format.html { redirect_to forecasts_url, notice: "Forecast was successfully created." }
+          format.json { render :show, status: :created, location: @forecast }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @forecast.errors, status: :unprocessable_entity }
+        end
+      end
+
     end
   end
 
