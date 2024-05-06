@@ -5,7 +5,8 @@
 <div id="forecasts">
   <% @forecasts.each do |forecast| %>
     <%= render forecast %>
-      <%= link_to "Show this forecast", forecast %>
+    <%= link_to "Show this forecast", forecast %><br/>
+    <%= link_to "Delete this forecast", forecast, method: :delete %>
     <hr/>
   <% end %>
 </div>
