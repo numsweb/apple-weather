@@ -36,7 +36,7 @@ class ForecastsController < ApplicationController
     end
 
     respond_to do |format|
-      #additional requirement, only create a new forecast if there is not an existing
+      # add code for additional requirement: only create a new forecast if there is not an existing
       # one that is less than 30 minutes old
 
       @forecast_found = false

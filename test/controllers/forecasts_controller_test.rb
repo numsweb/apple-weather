@@ -1,5 +1,7 @@
 require "test_helper"
 
+#note: run tests with command: rails -t
+
 class ForecastsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @forecast = forecasts(:one)
